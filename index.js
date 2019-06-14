@@ -8,6 +8,9 @@ const compression = require('compression')
 require('dotenv').config()
 const path = require('path')
 const favicon = require('serve-favicon')
+const flash = require('connect-flash')
+const session = require('express-session')
+const passport = require('passport')
 // /require packages
 
 // config middleware
@@ -18,6 +21,13 @@ app.use(helmet())
 app.use(express.static('public'))
 // app.use(favicon(path.join(__dirname, 'public', 'media', 'favicon.ico')))
 // /config middleware
+
+// config Passport
+app.use(session({ secret: 'secretstringss' }))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(flash())
+// /config Passport
 
 // import controllers
 
