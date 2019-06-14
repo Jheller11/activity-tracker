@@ -23,7 +23,9 @@ app.use(express.static('public'))
 // /config middleware
 
 // config Passport
-app.use(session({ secret: 'secretstringss' }))
+app.use(
+  session({ secret: 'secretstringss', resave: false, saveUninitialized: true })
+)
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
@@ -50,6 +52,9 @@ app.use((req, res, next) => {
 
 // /assign controller
 
+app.get('/', (req, res, next) => {
+  res.status(200).render('home')
+})
 // set port
 app.set('port', process.env.PORT || 4001)
 
