@@ -22,16 +22,32 @@ html
                     span.navbar-toggler-icon
                 div.collapse.navbar-collapse(id="navbarNav")
                     ul.navbar-nav.ml-auto
-                        li.nav-item
-                            a.nav-link(href='/') Home
-                        if !user
+                        if active === 'home'
                             li.nav-item
-                                a.nav-link(href='/users/login') Login
-                            li.nav-item
-                                a.nav-link(href='/users/signup') Signup
+                                a.nav-link.active(href='/') Home
                         else
                             li.nav-item
-                                a.nav-link(href='/tracker') Tracker
+                                a.nav-link(href='/') Home
+                        if !user
+                            if active === 'login'
+                                li.nav-item
+                                    a.nav-link.active(href='/users/login') Login
+                            else
+                                li.nav-item
+                                    a.nav-link(href='/users/login') Login
+                            if active === 'signup'
+                                li.nav-item
+                                    a.nav-link.active(href='/users/signup') Signup
+                            else
+                                li.nav-item
+                                    a.nav-link(href='/users/signup') Signup
+                        else
+                            if active === 'tracker'
+                                li.nav-item
+                                    a.nav-link.active(href='/tracker') Tracker
+                            else
+                                li.nav-item
+                                    a.nav-link(href='/tracker') Tracker                                
                             li.nav-item
                                 a.nav-link(href='/users/logout') Logout
     main.container

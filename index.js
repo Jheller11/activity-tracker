@@ -54,9 +54,11 @@ app.use('/users', userController)
 
 // routes
 app.get('/tracker', (req, res, next) => {
+  res.locals.active = 'tracker'
   res.status(200).render('tracker')
 })
 app.get('/', (req, res, next) => {
+  res.locals.active = 'home'
   res.status(200).render('home')
 })
 // /routes

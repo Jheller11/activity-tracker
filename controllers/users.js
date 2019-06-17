@@ -3,10 +3,12 @@ const passport = require('passport')
 require('../config/passport')(passport)
 
 router.get('/login', (req, res, next) => {
+  res.locals.active = 'login'
   res.render('users/login', { message: req.flash('loginMessage') })
 })
 
 router.get('/signup', (req, res, next) => {
+  res.locals.active = 'signup'
   res.render('users/signup', { message: req.flash('signupMessage') })
 })
 
