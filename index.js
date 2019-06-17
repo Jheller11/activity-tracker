@@ -33,6 +33,7 @@ app.use(flash())
 
 // import controllers
 const userController = require('./controllers/users')
+const trackerController = require('./controllers/tracker')
 // /import controllers
 
 // view engine
@@ -50,13 +51,10 @@ app.use((req, res, next) => {
 
 // assign controller
 app.use('/users', userController)
+app.use('/tracker', trackerController)
 // /assign controller
 
 // routes
-app.get('/tracker', (req, res, next) => {
-  res.locals.active = 'tracker'
-  res.status(200).render('tracker')
-})
 app.get('/', (req, res, next) => {
   res.locals.active = 'home'
   res.status(200).render('home')
