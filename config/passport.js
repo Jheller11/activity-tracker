@@ -3,12 +3,10 @@ const User = require('../models/User')
 
 module.exports = passport => {
   passport.serializeUser((user, done) => {
-    console.log('serial')
     done(null, user.id)
   })
 
   passport.deserializeUser((id, done) => {
-    console.log('deserial')
     User.findById(id, (err, user) => {
       done(err, user)
     })
@@ -31,6 +29,14 @@ module.exports = passport => {
                 null,
                 false,
                 req.flash('signupMessage', 'That email is already taken.')
+              )
+            }
+            if (password !== req.body.confirmPassword) {
+              console.log(password, req.body.confirmPassword)
+              return done(
+                null,
+                false,
+                req.flash('signupMessage', 'Passwords do not match.')
               )
             }
             if (!email || !req.body.displayName || !password) {
@@ -69,11 +75,9 @@ module.exports = passport => {
       (req, email, password, done) => {
         User.findOne({ 'local.email': email }, (err, user) => {
           if (err) {
-            console.log(err)
             return done(err)
           }
           if (!user) {
-            console.log('user not found')
             return done(
               null,
               false,
@@ -81,7 +85,6 @@ module.exports = passport => {
             )
           }
           if (!user.validPassword(password, user)) {
-            console.log('inval password')
             return done(
               null,
               false,

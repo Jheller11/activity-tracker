@@ -1,4 +1,18 @@
 extends layout.pug
 
 block content
-    h1 Tracker
+    .row
+        .col-sm-4
+            div
+                h2 #{user.local.displayName}
+            hr
+            div 
+                h4 More Info
+            hr
+            div
+                h4 Links
+                ul
+                    li linkone
+                    li linktwo
+        .col-sm-8
+            div Data

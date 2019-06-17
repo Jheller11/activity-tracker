@@ -7,13 +7,14 @@ block content
             .d-flex.justify-content-center
                 h4 Sign in:
             form(method="POST" action='/users/login')
-                div.form-group
+                .form-group
                     label(for="email") Email:
                     input.form-control(type="text" placeholder="example@email.com" name='email')
-                div.form-group
+                .form-group
                     label(for="password") Password:
                     input.form-control(type="password" placeholder="password" name='password')
                 button.btn.btn-primary(type="submit") Log In
-
+            if message
+                div.text-danger #{message}
             div New user? 
                 a.ml-2(href='/users/signup') Create Account

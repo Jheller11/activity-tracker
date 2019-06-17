@@ -61,6 +61,17 @@ app.get('/', (req, res, next) => {
 })
 // /routes
 
+// error handler
+// app.use((err, req, res, next) => {
+//   if (res.headersSent) {
+//     return next(err)
+//   }
+//   res.status(500)
+//   res.render('error', { error: err })
+// })
+
+// /error handler
+
 // set port
 app.set('port', process.env.PORT || 4001)
 
