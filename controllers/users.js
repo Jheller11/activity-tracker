@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const passport = require('passport')
-require('../config/passport')
+require('../config/passport')(passport)
 
 router.get('/login', (req, res, next) => {
   res.render('users/login', { message: req.flash('loginMessage') })

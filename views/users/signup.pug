@@ -1,0 +1,25 @@
+extends ../layout.pug
+
+block content
+    .container.w-50
+        .card.p-3
+            .d-flex.justify-content-center
+                h4 Create Account:
+            form(method="POST" action='/users/signup')
+
+                .form-group
+                    label(for="email") Email:
+                    input.form-control(type="text" placeholder="" name='email')
+                    small Enter valid email address.
+                .form-group
+                    label(for="password") Password:
+                    input.form-control(type="password" placeholder="password" name='password')
+                    small (minimum 8 characters)
+                .form-group
+                    label(for="displayName") Name:
+                    input.form-control(type='text' placeholder='how your name will appear' name="displayName")
+                
+                button.btn.btn-primary(type="submit") Sign Up!
+            
+            div Already have an account? 
+                    a.ml-2(href='/users/login') Sign In

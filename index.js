@@ -52,9 +52,15 @@ app.use((req, res, next) => {
 app.use('/users', userController)
 // /assign controller
 
+// routes
+app.get('/tracker', (req, res, next) => {
+  res.status(200).render('tracker')
+})
 app.get('/', (req, res, next) => {
   res.status(200).render('home')
 })
+// /routes
+
 // set port
 app.set('port', process.env.PORT || 4001)
 
