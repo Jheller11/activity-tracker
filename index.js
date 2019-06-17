@@ -32,7 +32,7 @@ app.use(flash())
 // /config Passport
 
 // import controllers
-
+const userController = require('./controllers/users')
 // /import controllers
 
 // view engine
@@ -49,7 +49,7 @@ app.use((req, res, next) => {
 // /custom middleware for title and user
 
 // assign controller
-
+app.use('/users', userController)
 // /assign controller
 
 app.get('/', (req, res, next) => {

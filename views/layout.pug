@@ -4,6 +4,7 @@ html
         title= title
         //- stylesheets
         link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+        link(rel="stylesheet" href="/stylesheets/main.css")
         //- scripts
         script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" defer)
         script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" defer)
@@ -13,27 +14,33 @@ html
         block head
 
     //- body
-    body
+    body.bg-light.d-flex.flex-column.justify-content-between
         header
             nav.navbar.navbar-expand-md.navbar-light.bg-light
                 a.navbar-brand(href='/') Activity Tracker
                 button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
                     span.navbar-toggler-icon
                 div.collapse.navbar-collapse(id="navbarNav")
-                    ul.navbar-nav
+                    ul.navbar-nav.ml-auto
                         li.nav-item
                             a.nav-link(href='/') Home
                         if !user
                             li.nav-item
-                                a.nav-link(href='/login') Login
+                                a.nav-link(href='/users/login') Login
                             li.nav-item
-                                a.nav-link(href='/signup') Signup
+                                a.nav-link(href='/users/signup') Signup
                         else
                             li.nav-item
                                 a.nav-link(href='/tracker') Tracker
                             li.nav-item
-                                a.nav-link(href='/logout') Logout
-    main
+                                a.nav-link(href='/users/logout') Logout
+    main.container
+
         block content
 
-    footer
+    footer.bg-dark.text-light
+        .container 
+            .row
+                .col-sm.text-center.small.py-2 Created by J. Heller
+                .col-sm.text-center.small.py-2 Github
+                .col.sm.text-center.small.py-2 Contact

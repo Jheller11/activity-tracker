@@ -1,7 +1,7 @@
 const mongoose = require('../db/connection.js')
 const bcrypt = require('bcrypt-nodejs')
 
-const Weight = require('./Weight')
+const daySchema = require('./Day')
 
 const userSchema = new mongoose.Schema({
   local: {
@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
       required: true
     }
   },
-  weightEntries: [Weight]
+  data: [daySchema]
 })
 
 userSchema.methods.generateHash = password => {
