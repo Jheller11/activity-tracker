@@ -48,7 +48,7 @@ module.exports = passport => {
                 req.flash('signupMessage', 'Passwords do not match.')
               )
             }
-            if (!email || !req.body.displayName || !password) {
+            if (!email || !req.body.displayName) {
               return done(
                 null,
                 false,

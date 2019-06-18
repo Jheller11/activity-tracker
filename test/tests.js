@@ -54,6 +54,7 @@ describe('Login Form', () => {
   })
 })
 
+// Create account form displays and handles registration errors
 describe('Create Account Form', () => {
   it('responds with 200 and display sign up form', done => {
     request(app)
@@ -86,29 +87,46 @@ describe('Create Account Form', () => {
       })
       .expect(302)
       .expect('Location', /\/signup/, done)
-  }),
-    it('rejects name is not provided', done => {
-      request(app)
-        .post('/users/signup')
-        .type('form')
-        .send({
-          email: 'testuserx',
-          password: 'testpassword',
-          confirmPassword: 'passwordtest'
-        })
-        .expect(302)
-        .expect('Location', /\/signup/, done)
-    })
+  })
+  it('rejects name is not provided', done => {
+    request(app)
+      .post('/users/signup')
+      .type('form')
+      .send({
+        email: 'testuserx',
+        displayName: '',
+        password: 'testpassword',
+        confirmPassword: 'testpassword'
+      })
+      .expect(302)
+      .expect('Location', /\/signup/, done)
+  })
   it('rejects when email is not provided', done => {
     request(app)
       .post('/users/signup')
       .type('form')
       .send({
+        email: '',
         displayName: 'Tester',
         password: 'testpassword',
-        confirmPassword: 'passwordtest'
+        confirmPassword: 'testpassword'
+      })
+      .expect(302)
+      .expect('Location', /\/signup/, done)
+  })
+  it('rejects when email is already taken', done => {
+    request(app)
+      .post('/users/signup')
+      .type('form')
+      .send({
+        email: 'testuser1',
+        displayName: 'test',
+        password: 'testuser1',
+        confirmPassword: 'testuser1'
       })
       .expect(302)
       .expect('Location', /\/signup/, done)
   })
 })
+
+// TODO -> add more tests for signup successful, logout, add data, edit data, delete data
