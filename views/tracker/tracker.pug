@@ -1,10 +1,20 @@
 extends ../layout.pug
 
+block head
+    link(rel="stylesheet", href="/stylesheets/tracker.css")
+
+
 block content
+    - let totalSteps = 0
+    - for (let i=0; i<user.data.length; i++) {
+    -    totalSteps += user.data[i].steps
+    - }
     .row
         .col-sm-4
             div
-                h2 #{user.local.displayName}
+                h2.name #{user.local.displayName}
+                div Total Steps: #{totalSteps}
+                div Current Weight: #{user.data[user.data.length -1].weight} lbs.
             hr
             div 
                 h4 More Info
