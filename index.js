@@ -79,3 +79,5 @@ app.listen(app.get('port'), () =>
   console.log('server running on ' + app.get('port'))
 )
 // /set port
+
+module.exports = app
