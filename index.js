@@ -55,6 +55,11 @@ app.use('/tracker', trackerController)
 // /assign controller
 
 // routes
+app.get('/contact', (req, res, next) => {
+  res.locals.active = ''
+  res.status(200).render('contact')
+})
+
 app.get('/', (req, res, next) => {
   res.locals.active = 'home'
   res.status(200).render('home')
@@ -62,14 +67,13 @@ app.get('/', (req, res, next) => {
 // /routes
 
 // error handler
-// app.use((err, req, res, next) => {
-//   if (res.headersSent) {
-//     return next(err)
-//   }
-//   res.status(500)
-//   res.render('error', { error: err })
-// })
-
+app.use((err, req, res, next) => {
+  if (res.headersSent) {
+    return next(err)
+  }
+  res.status(500)
+  res.render('error', { error: err })
+})
 // /error handler
 
 // set port

@@ -1,6 +1,7 @@
 html
     //- head
     head
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
         title= title
         //- stylesheets
         link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
@@ -57,6 +58,9 @@ html
     footer.bg-dark.text-light
         .container 
             .row
-                .col-sm.text-center.small.py-2 Created by J. Heller
-                .col-sm.text-center.small.py-2 Code
-                .col.sm.text-center.small.py-2 Contact
+                .col-sm.text-center.small.py-2 Created by 
+                    a.text-light(href="http://www.jeffreyaheller.com" target="_blank" rel='noopener noreferrer') J. Heller
+                .col-sm.text-center.small.py-2 
+                    a.text-light(href="https://github.com/Jheller11/activity-tracker" target="_blank") Code
+                .col.sm.text-center.small.py-2 
+                    a.text-light(href="/contact") Contact
