@@ -1,0 +1,24 @@
+extends ../layout.pug
+
+block content
+    .row
+        .col-sm-4
+            div
+                h2 #{user.local.displayName}
+            hr
+            div 
+                h4 More Info
+            hr
+            div
+                h4 Links
+                ul
+                    li 
+                        a(href="/tracker/new") Add Data
+                    li ls
+        .col-sm-8
+            div Data
+                ul
+                    each entry in user.data
+                        li 
+                            h5 #{entry.date.month}-#{entry.date.day}-#{entry.date.year}
+                            div #{entry.weight}/#{entry.steps}/#{entry.gym}/#{entry.diet}

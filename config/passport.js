@@ -31,8 +31,17 @@ module.exports = passport => {
                 req.flash('signupMessage', 'That email is already taken.')
               )
             }
+            if (password.length < 8) {
+              return done(
+                null,
+                false,
+                req.flash(
+                  'signupMessage',
+                  'Password must be at least 8 characters.'
+                )
+              )
+            }
             if (password !== req.body.confirmPassword) {
-              console.log(password, req.body.confirmPassword)
               return done(
                 null,
                 false,

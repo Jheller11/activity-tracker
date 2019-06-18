@@ -1,0 +1,24 @@
+extends ../layout.pug
+
+block head
+
+block content
+    form(method='POST' action=`/tracker/${user.id}`)
+        .form-group
+            label(for="date") Date
+            input.form-control(type="date" name='date')
+        .form-group
+            label(for='weight') Weight
+            input.form-control(type='number' name='weight' min='50' max='400')
+        .form-group
+            label(for='steps') Steps
+            input.form-control(type='number' name='steps' min='0')
+        .form-group
+            label(for='gym') Gym
+            input.form-control(type='number' name='gym' min='0' max='5')
+        .form-group
+            label(for='diet') Diet
+            input.form-control(type='number' name='diet' min='0' max='5')
+        button.btn.btn-primary(type="submit") Log In
+
+
