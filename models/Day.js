@@ -30,6 +30,10 @@ const daySchema = new mongoose.Schema({
   diet: {
     type: Number,
     default: 0
+  },
+  notes: {
+    type: String,
+    default: ''
   }
 })
 

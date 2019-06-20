@@ -40,6 +40,7 @@ router.delete('/:id', isLoggedIn, (req, res, next) => {
 router.get('/new', isLoggedIn, (req, res, next) => {
   res.status(200).render('tracker/new')
 })
+// TODO => format this new entry form
 
 // get form for editing entry
 router.get('/edit/:id', isLoggedIn, (req, res, next) => {
@@ -51,6 +52,9 @@ router.get('/edit/:id', isLoggedIn, (req, res, next) => {
     })
     .catch(err => next(err))
 })
+// TODO => format this edit entry form
+
+// TODO => add put route for editing previous entry
 
 // get data
 router.get('/', isLoggedIn, (req, res, next) => {
@@ -61,5 +65,6 @@ router.get('/', isLoggedIn, (req, res, next) => {
     })
     .catch(err => next(err))
 })
+// TODO => tracker calculations, updates, totals, presentation, UI
 
 module.exports = router

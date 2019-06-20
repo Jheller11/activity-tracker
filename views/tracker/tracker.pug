@@ -26,10 +26,10 @@ block content
                         a(href="/tracker/new") Add Data
                     li ls
         .col-sm-8
-            div 
-                h4 Data
-                .data-list
-                    li.data-header.card.bg-info.text-white
+            div.card
+                h4.card-title Data
+                ul.data-list.list-group.list-group-flush
+                    li.list-group-item.data-header.bg-info.text-white
                         div.text-center
                             i.fas.fa-calendar-day
                         div.text-right
@@ -41,14 +41,15 @@ block content
                         div.text-right
                             i.fas.fa-weight
                     each entry in user.data
-                        li.data-entry
+                        li.data-entry.list-group-item
                             div.text-center #{entry.date.month}-#{entry.date.day}-#{entry.date.year}
                             div.text-right #{entry.steps}
                             div.text-right #{entry.gym}
                             div.text-right #{entry.diet}
                             div.text-right #{entry.weight}
-                            div
-                                form(method='POST' action=`/tracker/${entry.id}?_method=DELETE`)
+                        //- ADD DATA TOGGLE TO SHOW/HIDE THESE BUTTONS
+                        div
+                            form(method='POST' action=`/tracker/${entry.id}?_method=DELETE`)
                                     button.btn.btn-link(type='submit') Delete
                             div
                                 a(href=`/tracker/edit/${entry.id}`) Edit

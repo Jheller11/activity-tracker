@@ -2,6 +2,7 @@
 .data-header {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 30px 30px;
 }
 
 .data-header {

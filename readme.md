@@ -9,9 +9,8 @@ A tool to keep track of exercise, diet, and other activity while monitoring weig
 1. Express
 2. Node
 3. Bootstrap
-4. React
-5. MongoDB
-6. Passport
+4. MongoDB
+5. Passport
 
 ## Deployed Application
 
