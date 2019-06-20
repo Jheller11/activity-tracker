@@ -1,0 +1,10 @@
+.data-entry,
+.data-header {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+}
+
+.data-header {
+  padding: 1rem;
+  width: 100%;
+}

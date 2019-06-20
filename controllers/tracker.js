@@ -3,11 +3,11 @@ const User = require('../models/User')
 const isLoggedIn = require('../config/utils').isLoggedIn
 
 // post new days numbers
-router.post('/:id', isLoggedIn, (req, res, next) => {
+router.post('/', isLoggedIn, (req, res, next) => {
   let date = req.body.date.split('-')
-  User.findById(req.params.id)
+  User.findById(req.user.id)
     .then(user => {
-      user.data.push({
+      user.data.unshift({
         date: {
           day: parseInt(date[2]),
           month: parseInt(date[1]),
@@ -18,6 +18,18 @@ router.post('/:id', isLoggedIn, (req, res, next) => {
         diet: req.body.diet,
         gym: req.body.gym
       })
+      // TODO -> sort data by date before saving back to user
+      user.save()
+    })
+    .then(() => res.redirect('/tracker'))
+    .catch(err => next(err))
+})
+
+// find a delete a data entry from User's records
+router.delete('/:id', isLoggedIn, (req, res, next) => {
+  User.findById(req.user.id)
+    .then(user => {
+      user.data = user.data.filter(day => day.id !== req.params.id)
       user.save()
     })
     .then(() => res.redirect('/tracker'))
@@ -27,6 +39,17 @@ router.post('/:id', isLoggedIn, (req, res, next) => {
 // get form for posting new entry
 router.get('/new', isLoggedIn, (req, res, next) => {
   res.status(200).render('tracker/new')
+})
+
+// get form for editing entry
+router.get('/edit/:id', isLoggedIn, (req, res, next) => {
+  User.findById(req.user.id)
+    .then(user => {
+      let target = user.data.find(day => day.id === req.params.id)
+      if (target) res.render('tracker/edit', { entry: target })
+      else res.redirect('/tracker')
+    })
+    .catch(err => next(err))
 })
 
 // get data

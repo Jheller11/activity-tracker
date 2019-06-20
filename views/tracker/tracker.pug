@@ -26,9 +26,29 @@ block content
                         a(href="/tracker/new") Add Data
                     li ls
         .col-sm-8
-            div Data
-                ul
+            div 
+                h4 Data
+                .data-list
+                    li.data-header.card.bg-info.text-white
+                        div.text-center
+                            i.fas.fa-calendar-day
+                        div.text-right
+                            i.fas.fa-walking
+                        div.text-right
+                            i.fas.fa-dumbbell
+                        div.text-right
+                            i.fas.fa-utensils
+                        div.text-right
+                            i.fas.fa-weight
                     each entry in user.data
-                        li 
-                            h5 #{entry.date.month}-#{entry.date.day}-#{entry.date.year}
-                            div #{entry.weight}/#{entry.steps}/#{entry.gym}/#{entry.diet}
+                        li.data-entry
+                            div.text-center #{entry.date.month}-#{entry.date.day}-#{entry.date.year}
+                            div.text-right #{entry.steps}
+                            div.text-right #{entry.gym}
+                            div.text-right #{entry.diet}
+                            div.text-right #{entry.weight}
+                            div
+                                form(method='POST' action=`/tracker/${entry.id}?_method=DELETE`)
+                                    button.btn.btn-link(type='submit') Delete
+                            div
+                                a(href=`/tracker/edit/${entry.id}`) Edit
